@@ -1,0 +1,1 @@
+This is the binary directory.  CMake prefers out of source builds like this, so build artifacts can be cleanly removed without affecting the source.
