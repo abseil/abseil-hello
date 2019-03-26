@@ -17,7 +17,7 @@ cc_library(
     srcs = ["hello.cc"],
     hdrs = ["hello.h"],
     deps = [
-        "@com_google_absl//absl/strings",
+        "@absl//absl/strings",
     ],
 )
 
@@ -26,7 +26,7 @@ cc_test(
     srcs = ["hello_test.cc"],
     deps = [
         ":hello",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest_main",
     ],
 )
 

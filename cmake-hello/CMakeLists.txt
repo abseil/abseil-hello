@@ -11,5 +11,5 @@ set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(abseil-cpp)
 
 # Define the target executable and its dependency on Abseil
-add_executable(main main.cc)
+add_executable(main main/main.cc)
 target_link_libraries(main absl::strings)
