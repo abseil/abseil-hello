@@ -25,6 +25,11 @@ steps:
 
 - script: |
     cd bazel-hello
+    bazel clean 
+  displayName: 'clean project'   
+
+- script: |
+    cd bazel-hello
     bazel run //:hello_test 
   displayName: 'run hello_test target'    
 
