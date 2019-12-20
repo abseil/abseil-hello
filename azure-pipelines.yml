@@ -26,4 +26,9 @@ steps:
 - script: |
     cd bazel-hello
     bazel run //:hello_main 
-  displayName: 'run hello_main target'  
+  displayName: 'run hello_main target'    
+
+- script: |
+    cd bazel-hello
+    bazel test //:hello_test 
+  displayName: 'run hello_main target'    
