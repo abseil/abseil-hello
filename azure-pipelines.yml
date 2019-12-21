@@ -30,10 +30,10 @@ steps:
 
 - script: |
     cd bazel-hello
-    bazel run //:hello_test 
+    bazel test //:hello_test 
   displayName: 'run hello_test target'    
 
 - script: |
     cd bazel-hello
-    bazel test //:hello_main 
+    bazel run //:hello_main 
   displayName: 'run hello_main target'    
