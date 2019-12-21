@@ -23,11 +23,29 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "weather",
+    srcs = ["weather.cc"],
+    hdrs = ["weather.h"],
+    deps = [
+        "@com_google_absl//absl/strings",
+    ],
+)
+
 cc_test(
     name = "hello_test",
     srcs = ["hello_test.cc"],
     deps = [
         ":hello",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "weather_test",
+    srcs = ["weather_test.cc"],
+    deps = [
+        ":weather",
         "@com_google_googletest//:gtest_main",
     ],
 )
