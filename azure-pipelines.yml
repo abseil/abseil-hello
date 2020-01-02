@@ -6,34 +6,54 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
+- stage: Install_Bazel
+  displayName: Download and install Bazel
+  jobs:
+  - job: InstallBazel
+    pool:
+      vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Welcome to abseil-hello pipline!
-  displayName: 'welcome info'
+    steps:
+    - script: |
+        echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+        curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+        sudo apt-get update && sudo apt-get install -y bazel
+      displayName: 'install bazel'
 
-- script: |
-    echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-    curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-    sudo apt-get update && sudo apt-get install -y bazel
-  displayName: 'install bazel'
+    - script: |
+        bazel version
+      displayName: 'show bazel version'
 
-- script: |
-    bazel version
-  displayName: 'show bazel version'
+- stage: Bazel_Build
+  displayName: Bazel Build
+  jobs:
+  - job: BazelRun
+    pool:
+      vmImage: 'ubuntu-latest'
 
-- script: |
-    cd bazel-hello
-    bazel clean 
-  displayName: 'clean project'   
+    steps: 
+    - script: |
+        cd bazel-hello
+        bazel clean 
+      displayName: 'clean project' 
 
-- script: |
-    cd bazel-hello
-    bazel test //:hello_test 
-  displayName: 'run hello_test target'    
+    - script: |
+        cd bazel-hello
+        bazel build ... 
+      displayName: 'run all build'  
 
-- script: |
-    cd bazel-hello
-    bazel run //:hello_main 
-  displayName: 'run hello_main target'    
+- stage: Bazel_Tests
+  displayName: Bazel Tests
+  jobs:
+  - job: BazelTests
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:  
+    - script: |
+        cd bazel-hello
+        bazel test ... 
+      displayName: 'run all tests'
+
+   
