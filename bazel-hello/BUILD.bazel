@@ -12,14 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
-
 cc_library(
     name = "hello",
     srcs = ["hello.cc"],
     hdrs = ["hello.h"],
     deps = [
-        "@com_google_absl//absl/strings",
+        "@abseil-cpp//absl/strings",
     ],
 )
 
@@ -28,7 +26,7 @@ cc_test(
     srcs = ["hello_test.cc"],
     deps = [
         ":hello",
-        "@com_google_googletest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
