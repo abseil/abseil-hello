@@ -1,4 +1,5 @@
 bazel-hello/bazel-*
+bazel-hello/MODULE.bazel.lock
 cmake-hello/build/**
 !cmake-hello/build/README
-**/.DS_Store
+

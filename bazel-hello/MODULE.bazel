@@ -1,0 +1,9 @@
+# MODULE.bazel
+
+# Choose the most recent version available at
+# https://registry.bazel.build/modules/abseil-cpp.
+bazel_dep(name = "abseil-cpp", version = "20240116.0")
+
+# For our unit test we use the GoogleTest framework.
+# https://registry.bazel.build/modules/googletest
+bazel_dep(name = "googletest", version = "1.14.0")

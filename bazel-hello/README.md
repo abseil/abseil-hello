@@ -1,17 +1,17 @@
 # Abseil Bazel Quick Start #
 
-Make sure that [Bazel is installed](https://docs.bazel.build/versions/master/install.html)
+Make sure that [Bazel](https://bazel.build/) (version 7.0 or newer) is installed
 on your system.
 
-Then build and run the example
+Then build and run the example:
 
 ```bash
- $git clone <this repo>
- cd <this repo>/bazel-hello
- bazel run //:hello_main -- a_commandline_arg
+ $git clone https://github.com/abseil/abseil-hello.git
+ cd abseil-hello/bazel-hello
+ bazel run //:hello_main
 ```
 
-To run the tests
+To run the tests:
 
 ```bash
 bazel test //:hello_test
